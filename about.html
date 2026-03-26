@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua Hoban — About</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .about-page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: calc(var(--space-16) + 72px) var(--space-8) var(--space-16);
+    }
+
+    .about-header {
+      margin-bottom: var(--space-16);
+    }
+
+    .about-header__eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .about-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.1;
+    }
+
+    .about-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .about-section__eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .about-section__title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: var(--space-6);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    .story-quote {
+      position: sticky;  
+      top: calc(72px + var(--space-8));
+    }
+
+    .story-quote__text {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.3;
+    }
+
+    .story-quote__text em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .story-quote__attr {
+      margin-top: var(--space-4);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+    }
+
+    .story-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .story-body p {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      line-height: 1.8;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .role-card {
+      background: var(--surface-container);
+      border-radius: 4px;
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      transition: background 0.25s ease;
+    }
+
+    .role-card:hover {
+      background: var(--surface-container-high);
+    }
+
+    .role-card__icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .role-card__title {
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+
+    .role-card__desc {
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+    }
+
+    .open-to-work {
+      margin-top: var(--space-6);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: var(--surface-container-low);
+      border-radius: 4px;
+      padding: var(--space-3) var(--space-6);
+    }
+
+    .open-to-work__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    .open-to-work__text {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+    }
+
+    .open-to-work__sub {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+    }
+
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .hobby-card {
+      background: var(--surface-container);
+      border-radius: 4px;
+      padding: var(--space-6) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-3);
+      transition: background 0.25s ease;
+    }
+
+    .hobby-card:hover {
+      background: var(--surface-container-high);
+    }
+
+    .hobby-card__emoji {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .hobby-card__name {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+
+    .hobby-card__desc {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+    }
+
+    .about-cta {
+      background: var(--surface-container-low);
+      border-radius: 4px;
+      padding: var(--space-12) var(--space-8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+    }
+
+    .about-cta__text h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: var(--space-2);
+    }
+
+    .about-cta__text p {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+
+    .about-cta__buttons {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Disable sticky on mobile — no room for it */
+      .story-quote {
+        position: static;
+      }
+
+      .about-cta {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-cta__buttons {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav__logo">
+      <span>></span> JoshuaHoban.sh
+    </div>
+    <ul class="nav__links">
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="about.html" style="color: var(--primary);">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <main class="about-page">
+
+    <!-- Page header -->
+    <div class="about-header fade-in visible">
+      <p class="about-header__eyebrow">// about.exe</p>
+      <h1>The Person<br>Behind the Code.</h1>
+    </div>
+    <section class="about-section fade-in">
+      <p class="about-section__eyebrow">01 // origin_story</p>
+      <h2 class="about-section__title">My Story</h2>
+
+      <div class="story-grid">
+        <div class="story-quote">
+          <p class="story-quote__text">
+            "I got into tech becuase of my <em>dad</em> — and stayed because I genuinely <em>love</em> it."
+          </p>
+          <p class="story-quote__attr">— Joshua Hoban</p>
+        </div>
+
+        <div class="story-body">
+          <p>
+            I didn't take the traditional path into software engineering. Growing up,
+            I never imagined I'd end up in college, It was never something that was considered in my family— 
+            but as I started working in IT and saw what was possible with code, something clicked. What started as
+            writing basic HTML and CSS for high school projects quickly evolved into scripting with PowerShell to automate IT tasks, 
+            and eventually learning Python for fun. I got into tech because my dad and stayed because I genuinely love it and plan on becoming a first 
+            gen college student and becoming a Software Engineer.
+          </p>
+          <p>
+            I currently work as an IT Admin at iPower Technologies, an MSP where I
+            manage Windows and MacOS environments, troubleshoot Microsoft 365 and
+            Exchange Online, and deal with everything from Active Directory to
+            Hyper-V virtualization. The job taught me how real infrastructure
+            behaves under pressure — and how much a well-written automation script
+            can save an entire team.
+          </p>
+          <p>
+            I'm now pursuing my B.S. in Software Engineering at Western Governors
+            University while continuing to work full-time and build personal projects
+            on the side. I'm proud of how far I've come, and I'm just getting started.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about-section fade-in">
+      <p class="about-section__eyebrow">02 // target_roles</p>
+      <h2 class="about-section__title">What I'm Looking For</h2>
+
+      <div class="roles-grid">
+
+        <div class="role-card">
+          <div class="role-card__icon">⚙️</div>
+          <h3 class="role-card__title">Junior Software Engineer</h3>
+          <p class="role-card__desc">
+            Building real features on a team where I can grow fast and contribute from day one.
+          </p>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card__icon">🚀</div>
+          <h3 class="role-card__title">Jr DevOps / SRE</h3>
+          <p class="role-card__desc">
+            Pipelines, infrastructure, and deployment automation — this is where my
+            IT background meets engineering.
+          </p>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card__icon">🖥️</div>
+          <h3 class="role-card__title">Frontend / Backend Developer</h3>
+          <p class="role-card__desc">
+            Whether it's building APIs or UI — I'm comfortable across the stack
+            and eager to go deeper on either side.
+          </p>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card__icon">🤖</div>
+          <h3 class="role-card__title">Automation / NOC</h3>
+          <p class="role-card__desc">
+            Scripting, monitoring, and incident response — exactly what I do
+            today, elevated to an engineering level.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="open-to-work">
+        <span class="open-to-work__dot"></span>
+        <span class="open-to-work__text">Open to Work</span>
+        <span class="open-to-work__sub">— Full-time, Contract &amp; Internship</span>
+      </div>
+
+    </section>
+
+    <section class="about-section fade-in">
+      <p class="about-section__eyebrow">03 // away_from_keyboard</p>
+      <h2 class="about-section__title">Outside the Terminal</h2>
+
+      <div class="hobbies-grid">
+
+        <div class="hobby-card">
+          <div class="hobby-card__emoji">🎮</div>
+          <p class="hobby-card__name">Gaming</p>
+          <p class="hobby-card__desc">
+            From competitive multiplayer to story-driven games — gaming
+            is how I unwind and stay sharp.
+          </p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-card__emoji">🖥️</div>
+          <p class="hobby-card__name">Home Lab</p>
+          <p class="hobby-card__desc">
+            Running VMs, testing server configs, and breaking things
+            on purpose so I can fix them.
+          </p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-card__emoji">🎵</div>
+          <p class="hobby-card__name">Music</p>
+          <p class="hobby-card__desc">
+            Always have something playing. Music keeps me focused
+            during long coding sessions.
+          </p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-card__emoji">💪</div>
+          <p class="hobby-card__name">Fitness</p>
+          <p class="hobby-card__desc">
+            Staying active keeps my mind sharp. A good workout
+            before a long coding session makes a real difference.
+          </p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-card__emoji">🌊</div>
+          <p class="hobby-card__name">Beach & Family</p>
+          <p class="hobby-card__desc">
+            Living in South Florida has its perks. Time with
+            family at the beach is how I recharge.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="about-cta fade-in">
+      <div class="about-cta__text">
+        <h3>Want to work together?</h3>
+        <p>Check out my work or reach out directly — I'd love to connect.</p>
+      </div>
+      <div class="about-cta__buttons">
+        <a href="resume.html" class="btn-secondary">View Resume</a>
+        <a href="contact.html" class="btn-primary">Get in Touch</a>
+      </div>
+    </div>
+
+
+  </main>
+
+
+  <footer class="footer">
+    <p>Built by <span>Joshua Hoban</span> · 2026 · Open to opportunities</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

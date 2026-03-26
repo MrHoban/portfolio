@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua Hoban — Resume</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .resume-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: calc(var(--space-16) + 72px) var(--space-8) var(--space-16);
+    }
+
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-8);
+      margin-bottom: var(--space-12);
+    }
+
+    .resume-header__info h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.1;
+    }
+
+    .resume-header__role {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .resume-header__contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2) var(--space-6);
+    }
+
+    .resume-header__contact a,
+    .resume-header__contact span {
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      font-family: var(--font-display);
+      transition: color 0.2s;
+    }
+
+    .resume-header__contact a:hover {
+      color: var(--primary);
+    }
+
+    .resume-header__download {
+      flex-shrink: 0; 
+    }
+
+    .resume-section {
+      margin-bottom: var(--space-12);
+    }
+
+    .resume-section__eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .resume-section__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: var(--space-6);
+    }
+
+    .resume-summary {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      line-height: 1.75;
+      max-width: 720px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .skill-group {
+      background: var(--surface-container);
+      border-radius: 4px;
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .skill-group__label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    .skill-group__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 24px; 
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        var(--primary),
+        rgba(70, 255, 120, 0.1)
+      );
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-8);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px; 
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 8px rgba(70, 255, 120, 0.4);
+    }
+
+    .timeline-item__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+
+    .timeline-item__date {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--tertiary);
+      white-space: nowrap;
+    }
+
+    .timeline-item__company {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-3);
+    }
+
+    .timeline-item__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .timeline-item__list li {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.65;
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .timeline-item__list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: var(--surface-container);
+      border-radius: 4px;
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .cert-item__badge {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .cert-item__name {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      color: var(--on-surface);
+      font-weight: 500;
+    }
+    @media (max-width: 640px) {
+      .resume-header {
+        flex-direction: column;
+      }
+
+      .resume-header__download {
+        width: 100%;
+        text-align: center;
+      }
+
+      .timeline-item__header {
+        flex-direction: column;
+        gap: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav__logo">
+      <span>></span> JoshuaHoban.sh
+    </div>
+    <ul class="nav__links">
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="resume.html" style="color: var(--primary);">Resume</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="resume-page">
+    <header class="resume-header fade-in visible">
+
+      <div class="resume-header__info">
+        <h1>Joshua Hoban</h1>
+        <p class="resume-header__role">Software Engineer Student & IT Admin</p>
+        <div class="resume-header__contact">
+          <span>Lake Worth, FL</span>
+          <span>561-562-3114</span>
+          <a href="mailto:joshuawhoban@gmail.com">joshuawhoban@gmail.com</a>
+          <a href="https://www.linkedin.com/in/joshua-hoban-258641276/" target="_blank">linkedin.com/in/joshuahoban</a>
+          <a href="https://github.com/MrHoban" target="_blank">github.com/MrHoban</a>
+        </div>
+      </div>
+      <div class="resume-header__download">
+        <a href="files/joshua-hoban-resume.pdf" download class="btn-primary">
+          ↓ Download PDF
+        </a>
+      </div>
+
+    </header>
+
+    <section class="resume-section fade-in">
+      <p class="resume-section__eyebrow">01 // overview</p>
+      <h2 class="resume-section__title">Summary</h2>
+      <p class="resume-summary">
+        Aspiring Software Engineer with hands-on experience in IT support, automation,
+        and troubleshooting across Windows-based business environments. Skilled in Python,
+        PowerShell, SQL, web development fundamentals, and scripting for workflow
+        improvement. Brings a strong foundation in real-world systems, debugging, and
+        operational problem-solving — with a growing focus on software development,
+        backend engineering, and scalable automation solutions.
+      </p>
+    </section>
+
+    <section class="resume-section fade-in">
+      <p class="resume-section__eyebrow">02 // stack</p>
+      <h2 class="resume-section__title">Core Skills</h2>
+
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <p class="skill-group__label">Languages & Dev</p>
+          <div class="skill-group__chips">
+            <span class="chip">Python</span>
+            <span class="chip">PowerShell</span>
+            <span class="chip">Java / C#</span>
+            <span class="chip">SQL</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">React</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">OOP</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group__label">Tools & Platforms</p>
+          <div class="skill-group__chips">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Windows Server</span>
+            <span class="chip">Active Directory</span>
+            <span class="chip">Microsoft 365</span>
+            <span class="chip">Exchange Online</span>
+            <span class="chip">Entra ID</span>
+            <span class="chip">Hyper-V</span>
+            <span class="chip">VirtualBox</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group__label">Networking & Systems</p>
+          <div class="skill-group__chips">
+            <span class="chip">TCP/IP</span>
+            <span class="chip">DNS</span>
+            <span class="chip">DHCP</span>
+            <span class="chip">VPN</span>
+            <span class="chip">Remote Connectivity</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group__label">Professional</p>
+          <div class="skill-group__chips">
+            <span class="chip">Debugging</span>
+            <span class="chip">Scripting</span>
+            <span class="chip">Automation</span>
+            <span class="chip">Incident Triage</span>
+            <span class="chip">Documentation</span>
+            <span class="chip">Root Cause Analysis</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="resume-section fade-in">
+      <p class="resume-section__eyebrow">03 // experience</p>
+      <h2 class="resume-section__title">Professional Experience</h2>
+
+      <div class="timeline">
+
+        <!-- Job 1 -->
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">Help Desk Technician</span>
+            <span class="timeline-item__date">iPower Technologies — MSP</span>
+          </div>
+          <p class="timeline-item__company">2025 - Present</p>
+          <ul class="timeline-item__list">
+            <li>Built and used PowerShell automation to remediate recurring system issues including SFC/DISM repairs, disk cleanup, printer spooler resets, and network reset workflows.</li>
+            <li>Supported Microsoft 365 and Exchange Online environments — mailbox troubleshooting, mail flow review, message tracing, and retention issues.</li>
+            <li>Troubleshot authentication and identity issues involving Active Directory, Entra ID, MFA providers, and Windows login workflows.</li>
+            <li>Documented troubleshooting timelines, diagnostics, and results to improve escalation quality and support consistency.</li>
+            <li>Collaborated with engineering and infrastructure teams during escalations and service-impacting incidents.</li>
+          </ul>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">Full-Stack Developer</span>
+            <span class="timeline-item__date">Freelance / Open Projects</span>
+          </div>
+          <p class="timeline-item__company">2020 - 2025</p>
+          <ul class="timeline-item__list">
+            <li>Built web applications using Python, React, Tailwind CSS, and SQL.</li>
+            <li>Developed and consumed REST APIs for application integration.</li>
+            <li>Applied debugging, logging, and structured problem-solving to improve application performance and reliability.</li>
+            <li>Translated functional requirements into scalable technical solutions.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="resume-section fade-in">
+      <p class="resume-section__eyebrow">04 // projects</p>
+      <h2 class="resume-section__title">Automation & Engineering Projects</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">PowerShell System Repair & Cleanup Toolkit</span>
+          </div>
+          <ul class="timeline-item__list">
+            <li>Built an automated remediation toolkit performing system health checks, disk cleanup, printer spooler resets, and network repair automation.</li>
+            <li>Implemented structured logging and ticket-ready output for enterprise troubleshooting.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">Operational Email & Identity Troubleshooting Workflows</span>
+          </div>
+          <ul class="timeline-item__list">
+            <li>Developed repeatable troubleshooting workflows for Exchange Online mail flow diagnostics and mailbox recovery scenarios.</li>
+            <li>Documented investigation steps for escalation and future operational reference.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">Home Lab & Virtualization Environment</span>
+          </div>
+          <ul class="timeline-item__list">
+            <li>Deployed Windows Server and Linux VMs to practice Active Directory, DNS, and infrastructure troubleshooting.</li>
+            <li>Simulated real-world operational scenarios and failure conditions.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="resume-section fade-in">
+      <p class="resume-section__eyebrow">05 // certifications</p>
+      <h2 class="resume-section__title">Certifications</h2>
+
+      <div class="cert-list">
+        <div class="cert-item">
+          <span class="cert-item__badge">✓</span>
+          <span class="cert-item__name">Microsoft Azure Fundamentals (AZ-900)</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__badge">✓</span>
+          <span class="cert-item__name">ConnectWise PSA Help Desk Certification</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__badge">✓</span>
+          <span class="cert-item__name">NinjaOne Certified Automation Specialist</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__badge">✓</span>
+          <span class="cert-item__name">Certification in Data Analytics & Data Structures with Python</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section fade-in">
+      <p class="resume-section__eyebrow">06 // education</p>
+      <h2 class="resume-section__title">Education</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">B.S. Software Engineering — In Progress</span>
+            <span class="timeline-item__date">Expected 2028–2029</span>
+          </div>
+          <p class="timeline-item__company">Western Governors University</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item__header">
+            <span class="timeline-item__title">High School Diploma</span>
+            <span class="timeline-item__date">2023</span>
+          </div>
+          <p class="timeline-item__company">FLVS</p>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+
+  <footer class="footer">
+    <p>Built by <span>Joshua Hoban</span> · 2026 · Open to opportunities</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

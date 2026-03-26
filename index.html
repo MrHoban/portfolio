@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua Hoban — Software Engineer Student | IT Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav__logo">
+      <span>></span> JoshuaHoban.sh
+    </div>
+    <ul class="nav__links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li> 
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero__visual">
+      <div class="profile-frame">
+        <img
+          src="images/profile.jpg"
+          alt="Joshua Hoban — Software Engineer"
+          class="profile-img"
+        />
+        <div class="profile-badge">
+          <span class="profile-badge__dot"></span>
+          Open to Work
+        </div>
+      </div>
+    </div>
+    <div class="hero__content">
+      <p class="eyebrow fade-in visible">Software Engineering Student</p>
+
+      <h1 class="hero__headline fade-in visible">
+        Building Systems<br>
+        that <span class="accent">actually work.</span>
+      </h1>
+      <p class="hero__sub fade-in visible">
+        B.S. Software Engineering student at WGU. I currently work as an IT Admin,
+        where I work on a variety of technologies including Windows workstations and
+        Servers, MacOS, and VMs. I also started creating PowerShell scripts to automate
+        my daily tasks and learned Python back in high school. Never saw myself going to
+        college but as my career grows, I've grown to love coding beyond just IT.
+        Proud of what I've accomplished so far and excited to see where my career takes me.
+      </p>
+
+      <div class="hero__stack fade-in visible">
+        <span class="chip">PowerShell</span>
+        <span class="chip">Python</span>
+        <span class="chip">Git</span>
+        <span class="chip">Bash</span>
+        <span class="chip">SQL</span>
+      </div>
+
+      <div class="hero__ctas fade-in visible">
+        <a href="#" class="btn-primary">View Resume</a>
+        <a href="#projects" class="btn-secondary">See Projects</a>
+      </div>
+    </div>
+
+    <div class="hero__terminal fade-in">
+      <div class="terminal">
+        <div class="terminal__bar">
+          <div class="terminal__dot terminal__dot--red"></div>
+          <div class="terminal__dot terminal__dot--yellow"></div>
+          <div class="terminal__dot terminal__dot--green"></div>
+          <span class="terminal__title">profile.ps1</span>
+        </div>
+        <div class="terminal__body">
+          <div class="t-comment"># Software Engineer Student</div>
+          <br>
+          <div><span class="t-keyword">$engineer</span><span class="t-var"> = @{</span></div>
+          <div>&nbsp;&nbsp;<span class="t-string">Name</span><span class="t-var">   = </span><span class="t-string">"Joshua Hoban"</span></div>
+          <div>&nbsp;&nbsp;<span class="t-string">Degree</span><span class="t-var"> = </span><span class="t-string">"Software Engineering - B.S"</span></div>
+          <div>&nbsp;&nbsp;<span class="t-string">Focus</span><span class="t-var">  = </span><span class="t-string">"Full Server Deployments / Engineer Projects"</span></div>
+          <div>&nbsp;&nbsp;<span class="t-string">Status</span><span class="t-var"> = </span><span class="t-primary">"Open to Projects and Opportunities"</span></div>
+          <div><span class="t-var">}</span></div>
+          <br>
+          <div><span class="t-fn">Write-Host</span><span class="t-var"> $engineer</span></div>
+          <br>
+          <div class="t-comment"># Output</div>
+          <div><span class="t-var">> Ready to ship.</span><span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__about fade-in">
+      <div class="about-card">
+        <p class="about-card__eyebrow">// about_me.txt</p>
+        <h3 class="about-card__title">Who I Am</h3>
+        <p class="about-card__body">
+          I'm a 20 year old Software Engineering student at WGU with a background in IT
+          Administration. I spend my days managing Windows and MacOS environments,
+          and my evenings writing PowerShell scripts to automate the parts of my
+          job that shouldn't require a human or just practice coding and building projects for fun. If I am not at my computer,
+          I am battling waves at the beach and getting burnt by the sun!
+        </p>
+        <p class="about-card__body">
+          I got into IT when I was about 8 years old and built my own PC with my father at the same age as well.
+          Got into programming at the age of 13, Starting with good old Roblox LUA, then moved over to PowerShell, And then in High School
+          learned Python and JavaScript. I never thought I would go to college but as my career has progressed, I've found myself loving coding more 
+          and more and wanted to take it to the next level by getting a degree in Software Engineering.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="stats">
+    <div class="stats__inner">
+      <div class="stat fade-in">
+        <div class="stat__number">12+</div>
+        <div class="stat__label">Projects / Repos Completed</div>
+      </div>
+      <div class="stat fade-in">
+        <div class="stat__number">2/4</div>
+        <div class="stat__label">Degree Program</div>
+      </div>
+      <div class="stat fade-in">
+        <div class="stat__number">12+</div>
+        <div class="stat__label">Years of Experience in IT</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <a href="https://github.com/MrHoban?tab=repositories">View all on GitHub →</a>
+    </div>
+
+    <div class="projects__grid">
+      <div class="card fade-in">
+        <div class="card__meta">
+          <span class="card__lang">PowerShell</span>
+          <a href="https://github.com/MrHoban/NOC-Automation-Lab" class="card__link">↗ GitHub</a>
+        </div>
+        <h3 class="card__title">NOC-Automation-Lab</h3>
+        <p class="card__desc">
+          This PowerShell-based proof of concept correlates SentinelOne quarantine
+          state, NinjaOne RMM health signals, and Acronis backup status.
+        </p>
+        <div class="card__chips">
+          <span class="chip">Automation</span>
+          <span class="chip">PowerShell CI</span>
+          <span class="chip">Integration</span>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card__meta">
+          <span class="card__lang">Python</span>
+          <a href="https://github.com/MrHoban/ticket-management-system" class="card__link">↗ GitHub</a>
+        </div>
+        <h3 class="card__title">Ticket Management System</h3>
+        <p class="card__desc">
+          A professional ticket management system with customer submission portal
+          and staff dashboard featuring admin authentication, ticket lifecycle
+          management, and real-time updates. Inspired by my work as a Help Desk
+          Technician.
+        </p>
+        <div class="card__chips">
+          <span class="chip">Python</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">APIs</span>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card__meta">
+          <span class="card__lang">JavaScript</span>
+          <a href="https://github.com/MrHoban/NovaWave-Solutions" class="card__link">↗ GitHub</a>
+        </div>
+        <h3 class="card__title">NovaWave Solutions</h3>
+        <p class="card__desc">
+          A modern web application for managing and visualizing data using
+          cutting-edge JavaScript frameworks and libraries.
+        </p>
+        <div class="card__chips">
+          <span class="chip">JavaScript</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built by <span>Joshua Hoban</span> · 2026 · Open to opportunities</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

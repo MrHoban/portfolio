@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua Hoban — Contact</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .contact-page {
+      min-height: 100vh;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: calc(var(--space-16) + 72px) var(--space-8) var(--space-16);
+    }
+
+    .contact-header {
+      margin-bottom: var(--space-12);
+    }
+
+    .contact-header__eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .contact-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+
+    .contact-header p {
+      font-size: 1rem;
+      color: var(--on-surface-variant);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .form-field label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      padding: 12px var(--space-4);
+      border-radius: 2px;
+      border: 1px solid rgba(64, 72, 93, 0.1); 
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(70, 255, 120, 0.08);
+    }
+
+    .form-field textarea {
+      resize: vertical;   
+      min-height: 140px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: var(--on-primary);
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .form-submit:hover {
+      opacity: 0.85;
+    }
+
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .sidebar-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      background: var(--surface-container);
+      border-radius: 4px;
+      padding: var(--space-4) var(--space-6);
+      transition: background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .contact-card:hover {
+      background: var(--surface-container-high);
+    }
+
+    .contact-card__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--surface-bright);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card__info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-card__label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+    }
+
+    .contact-card__value {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--on-surface);
+    }
+
+    .contact-availability {
+      margin-top: var(--space-4);
+      background: var(--surface-container-low);
+      border-radius: 4px;
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .contact-availability__title {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      margin-bottom: var(--space-2);
+    }
+
+    .contact-availability p {
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+    }
+
+    .contact-availability .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: var(--space-3);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+   
+    .status__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .contact-body {
+        grid-template-columns: 1fr; 
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav__logo">
+      <span>></span> JoshuaHoban.sh
+    </div>
+    <ul class="nav__links">
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" style="color: var(--primary);">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="contact-page">
+
+    <!-- Header -->
+    <div class="contact-header fade-in visible">
+      <p class="contact-header__eyebrow">// get_in_touch</p>
+      <h1>Let's Talk.</h1>
+      <p>
+        Whether you have an opportunity, a project, or just want to connect —
+        my inbox is open. I typically respond within 24 hours.
+      </p>
+    </div>
+
+
+      <!-- --------------------------------------------------------
+           CONTACT FORM
+           How mailto works:
+           The JS below intercepts the button click, reads the
+           input values, builds a mailto: URL with them, then
+           opens the user's email app with everything pre-filled.
+      -------------------------------------------------------- -->
+    <div class="contact-body">
+      <div class="contact-form fade-in">
+
+        <div class="form-field">
+          <label for="contact-name">Your Name</label>
+          <input
+            type="text"
+            id="contact-name"
+            placeholder="Jane Smith"
+            autocomplete="name"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="contact-email">Your Email</label>
+          <input
+            type="email"
+            id="contact-email"
+            placeholder="jane@example.com"
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="contact-subject">Subject</label>
+          <input
+            type="text"
+            id="contact-subject"
+            placeholder="Job opportunity / Project / Just saying hi"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            placeholder="Tell me about the opportunity or project..."
+          ></textarea>
+        </div>
+
+        <button class="form-submit" id="send-btn">Send Message</button>
+
+        <p class="form-note">
+          This will open your default email app with the message pre-filled.
+        </p>
+
+      </div>
+      <div class="contact-sidebar fade-in">
+
+        <p class="sidebar-label">// direct contact</p>
+
+        <a href="mailto:joshuawhoban@gmail.com" class="contact-card">
+          <div class="contact-card__icon">✉</div>
+          <div class="contact-card__info">
+            <span class="contact-card__label">Email</span>
+            <span class="contact-card__value">joshuawhoban@gmail.com</span>
+          </div>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/joshua-hoban-258641276/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <div class="contact-card__icon">in</div>
+          <div class="contact-card__info">
+            <span class="contact-card__label">LinkedIn</span>
+            <span class="contact-card__value">linkedin.com/in/joshuahoban</span>
+          </div>
+        </a>
+
+        <div class="contact-availability">
+          <p class="contact-availability__title">Current Availability</p>
+          <p>
+            Actively looking for Junior Software Engineering or DevOps opportunities.
+            Open to full-time, Part-Time, and internship roles.
+          </p>
+          <span class="status">
+            <span class="status__dot"></span>
+            Open to Opportunities
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <p>Built by <span>Joshua Hoban</span> · 2026 · Open to opportunities</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+    <!--
+        This script handles the contact form submission using mailto:.
+        When the user clicks "Send Message", it gathers the form data,
+        constructs a mailto: URL, and opens the user's email client with
+        everything pre-filled.
+     -->
+
+  <script>
+    document.getElementById('send-btn').addEventListener('click', () => {
+      const name    = document.getElementById('contact-name').value.trim();
+      const email   = document.getElementById('contact-email').value.trim();
+      const subject = document.getElementById('contact-subject').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return; 
+      }
+
+      const mailtoSubject = encodeURIComponent(
+        subject || `Portfolio Contact from ${name}`
+      );
+
+      const mailtoBody = encodeURIComponent(
+        `Hi Joshua,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${email}`
+      );
+
+      const mailtoURL = `mailto:joshuawhoban@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+      window.location.href = mailtoURL;
+    });
+  </script>
+
+</body>
+</html>
