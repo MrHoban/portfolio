@@ -114,6 +114,10 @@ a {
   color: var(--primary);
 }
 
+.nav__menu-btn {
+  display: none;
+}
+
 .hero {
   min-height: 100vh;
   display: grid;
@@ -572,6 +576,60 @@ a {
 .fade-in:nth-child(3) { transition-delay: 0.2s; }
 
 @media (max-width: 768px) {
+  /* ---- Nav / Hamburger ---- */
+  .nav {
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .nav__menu-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav__menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--on-surface);
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Hide links by default; shown when .nav--open is toggled */
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(15, 25, 48, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: var(--space-4) var(--space-8);
+  }
+
+  .nav--open .nav__links {
+    display: flex;
+  }
+
+  .nav__links li {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid rgba(138, 148, 176, 0.1);
+  }
+
+  .nav__links li:last-child {
+    border-bottom: none;
+  }
+
+  /* ---- Hero ---- */
   .hero {
     grid-template-columns: 1fr;
     padding: var(--space-8) var(--space-4);
@@ -589,16 +647,15 @@ a {
     height: 200px;
   }
 
-  .nav__links {
-    gap: var(--space-4);
+  /* Prevent terminal code from overflowing narrow screens */
+  .terminal__body {
+    overflow-x: auto;
+    font-size: 0.75rem;
   }
 
+  /* ---- Stats ---- */
   .stats__inner {
     grid-template-columns: 1fr;
     gap: var(--space-6);
-  }
-
-  .terminal__body {
-    grid-template-columns: 1fr;
   }
 }

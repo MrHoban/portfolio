@@ -29,3 +29,18 @@ const observer = new IntersectionObserver(
 document.querySelectorAll('.fade-in').forEach((element) => {
   observer.observe(element);
 });
+
+// Hamburger menu toggle
+const menuBtn = document.querySelector('.nav__menu-btn');
+const nav = document.querySelector('.nav');
+
+if (menuBtn) {
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('nav--open');
+  });
+
+  // Close the menu when any nav link is clicked
+  document.querySelectorAll('.nav__links a').forEach((link) => {
+    link.addEventListener('click', () => nav.classList.remove('nav--open'));
+  });
+}
